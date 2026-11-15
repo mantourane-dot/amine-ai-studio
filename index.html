@@ -149,7 +149,43 @@ const titles={home:'Dashboard',chat:'AI Chat',image:'Image Tools',camera:'Camera
 document.getElementById('pageTitle').textContent=titles[page];
 }
 
-function sendMessage(){
+
+async function sendMessage(){
+  const input = document.getElementById('prompt');
+  const output = document.getElementById('chatOutput');
+  const message = input.value.trim();
+
+  if (!message) return;
+
+  output.textContent = 'You: ' + message + '\n\nAMINE AI is thinking...';
+
+  try {
+    const response = await fetch(
+      'https://weathered-fog-39fb.mantouraneamine.workers.dev',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message: message })
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || 'Request failed');
+    }
+
+    output.textContent = 'You: ' + message +
+      '\n\nAMINE AI: ' + data.answer;
+
+  } catch (error) {
+    output.textContent =
+      'Connection error: ' + error.message;
+  }
+}
+
 const value=document.getElementById('prompt').value.trim();
 if(!value)return;
 document.getElementById('chatOutput').textContent=
