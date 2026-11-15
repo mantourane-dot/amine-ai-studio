@@ -1,62 +1,233 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101812">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AMINE AI STUDIO</title>
 <style>
-:root{--bg:#0b120e;--surface:#121d16;--surface2:#18251d;--line:#2b4031;--text:#f4fff6;--muted:#a4b8a9;--green:#27d17f;--orange:#ff9a45;--shadow:0 18px 55px #0005}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 65% -15%,#23452d 0,transparent 38%),var(--bg);color:var(--text);font-family:Inter,system-ui,"Segoe UI",sans-serif;min-height:100vh}button,input,textarea,select{font:inherit}button{cursor:pointer}.app{min-height:100vh;display:grid;grid-template-columns:258px minmax(0,1fr)}
-.sidebar{position:sticky;top:0;height:100vh;padding:23px 16px;background:#0d1711ef;border-right:1px solid var(--line);display:flex;flex-direction:column;z-index:5}.brand{display:flex;align-items:center;gap:11px;padding:3px 9px 26px;font-weight:850;font-size:17px;letter-spacing:.3px}.brand-mark{height:39px;width:39px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(135deg,var(--green),var(--orange));color:#102016;font-size:22px}.brand-name span{color:var(--green)}.side-label{padding:15px 11px 8px;color:#73877a;font-size:10px;font-weight:800;letter-spacing:1.7px;text-transform:uppercase}.nav{width:100%;display:flex;align-items:center;gap:12px;padding:11px 12px;margin:3px 0;border:1px solid transparent;border-radius:11px;background:transparent;color:var(--muted);text-align:left;font-size:13px}.nav:hover{background:#19281e;color:white}.nav.active{background:linear-gradient(100deg,#1d3a28,#1e3025);border-color:#31583d;color:#fff}.nav.active .ico{color:var(--green)}.nav .ico{width:20px;text-align:center;font-size:16px}.side-spacer{flex:1}.owner{border-top:1px solid var(--line);padding:17px 6px 0;display:flex;align-items:center;gap:10px}.avatar{height:36px;width:36px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--green),var(--orange));font-weight:900;color:#122017}.owner small{display:block;color:var(--muted);margin-top:3px;font-size:11px}
-.main{min-width:0;padding:25px clamp(17px,4vw,55px) 60px;max-width:1600px;width:100%;margin:auto}.topbar{height:43px;display:flex;justify-content:space-between;align-items:center;margin-bottom:40px;gap:14px}.breadcrumb{font-size:12px;color:var(--muted)}.top-actions{display:flex;align-items:center;gap:9px}.select,.icon-btn{background:#142018;border:1px solid var(--line);border-radius:10px;color:var(--text);padding:9px 11px}.icon-btn{height:38px;width:39px}.hero{display:flex;justify-content:space-between;align-items:flex-end;gap:22px;margin-bottom:33px}.kicker{font-size:11px;letter-spacing:2px;font-weight:850;color:var(--green);text-transform:uppercase}.hero h1{font-size:clamp(34px,5vw,58px);letter-spacing:-1.8px;line-height:1.05;margin:13px 0}.hero h1 span{color:var(--orange)}.hero p{max-width:650px;color:var(--muted);font-size:14px;line-height:1.7;margin:0}.hero-badge{flex-shrink:0;display:inline-flex;align-items:center;gap:8px;padding:10px 13px;border-radius:99px;border:1px solid #315c3e;background:#13251a;color:#bff5d1;font-size:11px}.dot{height:7px;width:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
-.section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:31px 0 14px}.section-head h2{font-size:17px;margin:0}.section-head p{font-size:11px;color:var(--muted);margin:0}.tools-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.tool-card{position:relative;overflow:hidden;text-align:left;border:1px solid var(--line);border-radius:16px;padding:19px;background:linear-gradient(145deg,#18271d,#111b15);color:var(--text);min-height:152px;transition:transform .2s,border-color .2s,box-shadow .2s}.tool-card:hover{transform:translateY(-3px);border-color:#438b5b;box-shadow:var(--shadow)}.tool-icon{height:41px;width:41px;display:grid;place-items:center;border-radius:12px;margin-bottom:15px;background:#1d402b;font-size:20px}.tool-card:nth-child(2) .tool-icon{background:#49301b}.tool-card:nth-child(3) .tool-icon{background:#243d32}.tool-card:nth-child(4) .tool-icon{background:#3d3020}.tool-card:nth-child(5) .tool-icon{background:#263b30}.tool-card:nth-child(6) .tool-icon{background:#3c2c1c}.tool-card b{display:block;font-size:14px;margin-bottom:6px}.tool-card small{display:block;color:var(--muted);font-size:11px;line-height:1.55}.arrow{position:absolute;right:17px;bottom:18px;color:var(--orange);font-size:17px}
-.workspace{border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,#17231b,#111a14);padding:20px;box-shadow:0 12px 38px #0002}.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:15px}.tab{border:1px solid var(--line);background:#101a14;color:var(--muted);border-radius:9px;padding:8px 12px;font-size:12px}.tab.active{background:#20442d;border-color:#39734b;color:#eaffef}.prompt-label{display:block;font-size:12px;color:#dce9df;margin-bottom:9px;font-weight:650}textarea{width:100%;min-height:105px;resize:vertical;background:#0c1510;border:1px solid #34503c;color:var(--text);border-radius:12px;padding:14px;outline:none;font-size:13px;line-height:1.6}textarea:focus,input:focus,select:focus{border-color:var(--green);outline:2px solid #27d17f25}.work-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:13px}.secondary{border:1px solid var(--line);background:#142018;color:#d9e8dc;border-radius:9px;padding:9px 12px;font-size:11px}.primary{border:0;border-radius:10px;padding:11px 17px;font-weight:800;color:#102017;background:linear-gradient(105deg,var(--green),#9ce1a4);font-size:12px}.primary:hover{filter:brightness(1.07)}.hint{font-size:11px;color:var(--muted)}.upload-row{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:13px}.file-name{color:var(--muted);font-size:11px}.output{display:none;margin-top:15px;border:1px solid #34503c;border-radius:12px;padding:14px;background:#0e1912;color:#d8e8dc;font-size:12px;line-height:1.6;white-space:pre-wrap}.about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:14px}.about-card{padding:20px;border:1px solid var(--line);border-radius:15px;background:#121e16}.about-card h3{font-size:14px;margin:0 0 9px}.about-card p{font-size:12px;line-height:1.65;color:var(--muted);margin:0}.creator{color:var(--orange);font-weight:800}.notice{margin-top:14px;padding:12px 14px;border:1px solid #493d2a;background:#211b13;border-radius:11px;color:#dec9a8;font-size:11px;line-height:1.6}footer{border-top:1px solid var(--line);margin-top:35px;padding-top:19px;color:#718276;font-size:10px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.mobile-menu{display:none}[dir=rtl] .hero,[dir=rtl] .section-head,[dir=rtl] .work-bottom{direction:rtl}[dir=rtl] .nav{text-align:right}[dir=rtl] .arrow{right:auto;left:17px}
-@media(max-width:1050px){.app{grid-template-columns:220px 1fr}.tools-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:760px){.app{grid-template-columns:1fr}.sidebar{position:fixed;left:-270px;top:0;width:258px;transition:left .22s;box-shadow:var(--shadow)}.sidebar.open{left:0}.mobile-menu{display:inline-grid;place-items:center}.main{padding:17px 15px 40px}.topbar{margin-bottom:28px}.hero{align-items:flex-start;flex-direction:column}.hero-badge{margin-top:2px}.about-grid{grid-template-columns:1fr}}@media(max-width:480px){.tools-grid{grid-template-columns:1fr}.tool-card{min-height:130px}.topbar{align-items:flex-start}.breadcrumb{padding-top:10px}.select{max-width:120px}.hero h1{font-size:38px}}
+*{box-sizing:border-box}
+body{margin:0;background:#0b1110;color:#f2f5f3;font-family:Arial,sans-serif}
+.app{display:flex;min-height:100vh}
+.sidebar{width:245px;background:#101a17;border-right:1px solid #26332e;padding:25px 17px}
+.logo{font-size:21px;font-weight:800;color:#f6a64b;margin:5px 8px 35px}
+.logo span{color:white}
+.nav{display:block;width:100%;padding:14px;margin:5px 0;text-align:left;background:transparent;color:#bdc9c2;border:0;border-radius:10px;font-size:15px;cursor:pointer}
+.nav.active,.nav:hover{background:#24352d;color:#ffb45f}
+.main{flex:1;padding:28px;max-width:1200px;margin:auto;width:100%}
+.top{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+h1{font-size:27px;margin:0}
+select,input,textarea{background:#17231e;color:white;border:1px solid #35483d;border-radius:10px;padding:12px}
+.hero{margin:35px 0 25px;padding:28px;border-radius:18px;background:linear-gradient(120deg,#183b2c,#263023)}
+.hero h2{font-size:28px;margin:0 0 10px}
+.hero p{color:#c6d2ca;line-height:1.6}
+.panel{background:#121d18;border:1px solid #293a31;border-radius:16px;padding:20px;margin-bottom:18px}
+.panel h3{margin-top:0}
+textarea{width:100%;min-height:100px;resize:vertical;font-size:15px}
+button{cursor:pointer}
+.primary{background:#f5a64c;color:#172018;border:0;border-radius:10px;padding:12px 18px;font-weight:bold}
+.secondary{background:#26372e;color:white;border:1px solid #405348;border-radius:10px;padding:11px 14px}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+.output{white-space:pre-wrap;line-height:1.6;color:#dce8df;margin-top:15px}
+.preview{max-width:100%;max-height:300px;border-radius:12px;margin-top:15px}
+video{max-width:100%;border-radius:12px;margin-top:15px}
+.small{font-size:12px;color:#91a399}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:13px}
+.tile{background:#192720;border:1px solid #34473b;padding:18px;border-radius:13px}
+.tile b{display:block;margin-bottom:8px}
+@media(max-width:700px){.app{display:block}.sidebar{width:100%;padding:15px}.logo{margin-bottom:12px}.nav{display:inline-block;width:auto;padding:10px}.main{padding:17px}}
 </style>
 </head>
-<body><div class="app">
-<aside class="sidebar" id="sidebar">
- <div class="brand"><div class="brand-mark">✦</div><div class="brand-name">AMINE <span>AI STUDIO</span></div></div>
- <div class="side-label" data-en="Workspace" data-fr="Espace de travail" data-ar="مساحة العمل">Workspace</div>
- <button class="nav active" data-section="dashboard"><span class="ico">⌂</span><span data-en="Dashboard" data-fr="Tableau de bord" data-ar="الرئيسية">Dashboard</span></button>
- <button class="nav" data-section="chat"><span class="ico">◉</span><span data-en="AI Chat" data-fr="Chat IA" data-ar="المحادثة الذكية">AI Chat</span></button>
- <button class="nav" data-section="image"><span class="ico">▧</span><span data-en="Image Generator" data-fr="Générateur d’images" data-ar="إنشاء الصور">Image Generator</span></button>
- <button class="nav" data-section="video"><span class="ico">▶</span><span data-en="Video Generator" data-fr="Générateur vidéo" data-ar="إنشاء الفيديو">Video Generator</span></button>
- <button class="nav" data-section="files"><span class="ico">▤</span><span data-en="Files" data-fr="Fichiers" data-ar="الملفات">Files</span></button>
- <button class="nav" data-section="editor"><span class="ico">✧</span><span data-en="Photo Editor" data-fr="Éditeur photo" data-ar="محرر الصور">Photo Editor</span></button>
- <div class="side-label" data-en="Library" data-fr="Bibliothèque" data-ar="المكتبة">Library</div>
- <button class="nav" data-section="creations"><span class="ico">▦</span><span data-en="My Creations" data-fr="Mes créations" data-ar="إبداعاتي">My Creations</span></button>
- <button class="nav" data-section="settings"><span class="ico">⚙</span><span data-en="Settings" data-fr="Paramètres" data-ar="الإعدادات">Settings</span></button>
- <div class="side-spacer"></div><div class="owner"><div class="avatar">A</div><div><b>Amine Mantourane</b><small data-en="Studio creator" data-fr="Créateur du studio" data-ar="مؤسس المنصة">Studio creator</small></div></div>
+<body>
+<div class="app">
+<aside class="sidebar">
+<div class="logo">AMINE <span>AI STUDIO</span></div>
+<button class="nav active" onclick="showPage('home',this)">🏠 Dashboard</button>
+<button class="nav" onclick="showPage('chat',this)">💬 AI Chat</button>
+<button class="nav" onclick="showPage('image',this)">🖼️ Image Tools</button>
+<button class="nav" onclick="showPage('camera',this)">📷 Camera</button>
+<button class="nav" onclick="showPage('voice',this)">🎙️ Voice Studio</button>
+<button class="nav" onclick="showPage('files',this)">📁 My Files</button>
 </aside>
+
 <main class="main">
- <div class="topbar"><div style="display:flex;align-items:center;gap:12px"><button class="icon-btn mobile-menu" id="menuBtn" aria-label="Open menu">☰</button><div class="breadcrumb">AMINE AI STUDIO <span style="color:var(--orange)">/</span> <span id="crumb">Dashboard</span></div></div><div class="top-actions"><select class="select" id="language" aria-label="Language"><option value="en">English</option><option value="fr">Français</option><option value="ar">العربية</option></select><button class="icon-btn" id="themeBtn" title="Swap accent colors">◐</button></div></div>
- <section class="hero"><div><div class="kicker" data-en="YOUR CREATIVE AI WORKSPACE" data-fr="VOTRE ESPACE CRÉATIF IA" data-ar="مساحتك الإبداعية بالذكاء الاصطناعي">YOUR CREATIVE AI WORKSPACE</div><h1>HI, I'M <span>AMINE</span> 👋</h1><p data-en="Welcome to a place where ideas become possibilities. Chat, create, explore and make something amazing." data-fr="Bienvenue dans un espace où les idées deviennent des possibilités. Discutez, créez et explorez." data-ar="مرحباً بك في مساحة تتحول فيها الأفكار إلى إمكانيات. تحدث، ابتكر واكتشف.">Welcome to a place where ideas become possibilities. Chat, create, explore and make something amazing.</p></div><div class="hero-badge"><span class="dot"></span><span data-en="CREATIVE STUDIO" data-fr="STUDIO CRÉATIF" data-ar="استوديو إبداعي">CREATIVE STUDIO</span></div></section>
- <section id="dashboardSection"><div class="section-head"><h2 data-en="Explore your tools" data-fr="Explorez vos outils" data-ar="اكتشف أدواتك">Explore your tools</h2><p data-en="Choose a workspace to get started" data-fr="Choisissez un espace pour commencer" data-ar="اختر أداة للبدء">Choose a workspace to get started</p></div>
- <div class="tools-grid">
- <button class="tool-card" data-open="chat"><div class="tool-icon">💬</div><b>AI Chat</b><small>Ask, write, translate and brainstorm.</small><span class="arrow">↗</span></button>
- <button class="tool-card" data-open="image"><div class="tool-icon">🎨</div><b>AI Image Generator</b><small>Turn text ideas into original pictures.</small><span class="arrow">↗</span></button>
- <button class="tool-card" data-open="video"><div class="tool-icon">🎬</div><b>AI Video Generator</b><small>Explore creative video workflows.</small><span class="arrow">↗</span></button>
- <button class="tool-card" data-open="files"><div class="tool-icon">📁</div><b>AI Files</b><small>Choose a document or image to preview.</small><span class="arrow">↗</span></button>
- <button class="tool-card" data-open="editor"><div class="tool-icon">🪄</div><b>Photo Editor</b><small>Prepare an image for future AI editing.</small><span class="arrow">↗</span></button>
- <button class="tool-card" data-open="creations"><div class="tool-icon">✨</div><b>My Creations</b><small>Your creative workspace and saved previews.</small><span class="arrow">↗</span></button>
- </div></section>
- <section id="workSection"><div class="section-head"><h2 id="workTitle">Start creating</h2><p id="workSub">Your creative workspace</p></div><div class="workspace">
- <div class="tabs"><button class="tab active" data-tab="chat">Chat</button><button class="tab" data-tab="image">Image</button><button class="tab" data-tab="video">Video</button><button class="tab" data-tab="files">Files</button></div>
- <label class="prompt-label" id="promptLabel" for="prompt">What would you like to do?</label><textarea id="prompt" placeholder="Write your message or describe your idea..."></textarea>
- <div class="upload-row"><input type="file" id="fileInput" hidden accept="image/*,.pdf,.txt,.doc,.docx,.xls,.xlsx"><button class="secondary" id="uploadBtn">＋ Upload a file</button><span class="file-name" id="fileName">No file selected</span></div>
- <div class="work-bottom"><span class="hint" id="hint">Tip: describe your idea clearly.</span><button class="primary" id="actionBtn">Send message ↗</button></div><div class="output" id="output" role="status"></div></div>
- <div class="notice">Prototype status: navigation, language switching and file selection work. AI generation, live AI chat, accounts and cloud saving still need service connections.</div></section>
- <section><div class="section-head"><h2 data-en="About the studio" data-fr="À propos du studio" data-ar="حول الاستوديو">About the studio</h2><p data-en="Made for curious creators" data-fr="Pour les créateurs curieux" data-ar="للمبدعين الفضوليين">Made for curious creators</p></div><div class="about-grid"><div class="about-card"><h3>AMINE AI STUDIO</h3><p>A creative AI platform concept bringing chat, images, videos and file tools together in one place.</p></div><div class="about-card"><h3>Created by</h3><p class="creator">Amine Mantourane</p><p>Think. Create. Imagine.</p></div></div></section>
- <footer><span>© 2026 AMINE AI STUDIO</span><span>Think <span style="color:var(--green)">●</span> Create <span style="color:var(--orange)">●</span> Imagine</span></footer>
-</main></div>
+<div class="top">
+<h1 id="pageTitle">Dashboard</h1>
+<select id="language">
+<option>English</option>
+<option>العربية</option>
+<option>Darija</option>
+<option>Français</option>
+<option>Español</option>
+</select>
+</div>
+
+<section id="home">
+<div class="hero">
+<h2>Welcome to AMINE AI STUDIO ✨</h2>
+<p>Your creative AI workspace. Chat, work with images, use your camera and record audio — all in one place.</p>
+<button class="primary" onclick="showPage('chat',document.querySelectorAll('.nav')[1])">Start Chatting →</button>
+</div>
+<div class="grid">
+<div class="tile"><b>💬 AI Chat</b><span class="small">Your AI conversation space</span></div>
+<div class="tile"><b>🖼️ Image Tools</b><span class="small">Choose and preview images</span></div>
+<div class="tile"><b>📷 Camera</b><span class="small">Take a photo with your camera</span></div>
+<div class="tile"><b>🎙️ Voice Studio</b><span class="small">Record audio from your microphone</span></div>
+</div>
+</section>
+
+<section id="chat" hidden>
+<div class="panel">
+<h3>💬 AI Chat</h3>
+<textarea id="prompt" placeholder="Write your message here..."></textarea>
+<div class="actions">
+<button class="primary" onclick="sendMessage()">Send Message</button>
+</div>
+<div class="output" id="chatOutput">Your conversation will appear here.</div>
+<p class="small">Demo mode: a real AI model has not been connected yet.</p>
+</div>
+</section>
+
+<section id="image" hidden>
+<div class="panel">
+<h3>🖼️ Image Tools</h3>
+<input type="file" id="imageInput" accept="image/*">
+<div id="imagePreview"></div>
+<p class="small">Choose an image to preview it. AI image generation and editing will be connected later.</p>
+</div>
+</section>
+
+<section id="camera" hidden>
+<div class="panel">
+<h3>📷 Camera Studio</h3>
+<div class="actions">
+<button class="primary" onclick="openCamera()">Open Camera</button>
+<button class="secondary" onclick="takePhoto()">Take Photo</button>
+<button class="secondary" onclick="stopCamera()">Close Camera</button>
+</div>
+<video id="video" autoplay playsinline hidden></video>
+<canvas id="canvas" hidden></canvas>
+<div id="photoResult"></div>
+</div>
+</section>
+
+<section id="voice" hidden>
+<div class="panel">
+<h3>🎙️ Voice Studio</h3>
+<p>Record audio using your microphone.</p>
+<div class="actions">
+<button class="primary" onclick="startRecording()">Start Recording</button>
+<button class="secondary" onclick="stopRecording()">Stop Recording</button>
+</div>
+<p id="recordStatus" class="output">Not recording.</p>
+<audio id="audioPlayback" controls hidden></audio>
+</div>
+</section>
+
+<section id="files" hidden>
+<div class="panel">
+<h3>📁 My Files</h3>
+<input type="file" id="fileInput">
+<p id="fileInfo" class="output">No file selected.</p>
+</div>
+</section>
+
+</main>
+</div>
+
 <script>
-const $=id=>document.getElementById(id);let currentTab="chat";
-const details={chat:{title:"AI Chat",label:"What would you like to ask?",placeholder:"Ask a question or write a message...",hint:"This chat is a local demo, not connected to a live AI model.",button:"Send message ↗"},image:{title:"Image Generator",label:"Describe the image you want",placeholder:"Example: A tiny orange cat exploring a green futuristic city...",hint:"Image generation needs a connected AI image service.",button:"Prepare image prompt ↗"},video:{title:"Video Generator",label:"Describe the video you imagine",placeholder:"Describe the scene, movement and mood...",hint:"Video generation needs a connected video service.",button:"Prepare video prompt ↗"},files:{title:"AI Files",label:"Choose a file to add to your workspace",placeholder:"Add a note about this file...",hint:"File selection preview works locally in this prototype.",button:"Review file ↗"},editor:{title:"Photo Editor",label:"Describe the edit you want",placeholder:"Describe how you want your photo changed...",hint:"Photo editing needs an AI image service connection.",button:"Prepare edit ↗"},creations:{title:"My Creations",label:"Your saved projects",placeholder:"Write a note about an idea to save...",hint:"Cloud saving is not connected yet.",button:"Save note locally ↗"},settings:{title:"Settings",label:"Studio preferences",placeholder:"Use the language and appearance controls above.",hint:"More account settings will be added later.",button:"Show preferences"}};
-function setTab(name){currentTab=name;const d=details[name]||details.chat;$('workTitle').textContent=d.title;$('workSub').textContent="AMINE AI STUDIO workspace";$('promptLabel').textContent=d.label;$('prompt').placeholder=d.placeholder;$('hint').textContent=d.hint;$('actionBtn').textContent=d.button;document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x.dataset.tab===name));$('output').style.display='none';}
-function setSection(name){setTab(name);$('crumb').textContent=details[name]?.title||'Dashboard';document.querySelectorAll('[data-section]').forEach(x=>x.classList.toggle('active',x.dataset.section===name));(name==='dashboard'?$ ('dashboardSection'):$('workSection')).scrollIntoView({behavior:'smooth'});$('sidebar').classList.remove('open');}
-document.querySelectorAll('[data-section]').forEach(x=>x.addEventListener('click',()=>setSection(x.dataset.section)));document.querySelectorAll('[data-open]').forEach(x=>x.addEventListener('click',()=>setSection(x.dataset.open)));document.querySelectorAll('[data-tab]').forEach(x=>x.addEventListener('click',()=>setTab(x.dataset.tab)));
-$('menuBtn').addEventListener('click',()=>$('sidebar').classList.toggle('open'));$('uploadBtn').addEventListener('click',()=>$('fileInput').click());$('fileInput').addEventListener('change',()=>{const f=$('fileInput').files[0];$('fileName').textContent=f?`${f.name} · ${(f.size/1024).toFixed(1)} KB`:'No file selected';if(f){$('output').style.display='block';$('output').textContent=`Selected file: ${f.name}\nType: ${f.type||'Unknown'}\nLocal preview only: this file has not been uploaded to a server.`;}});
-$('actionBtn').addEventListener('click',()=>{const raw=$('prompt').value.trim(),out=$('output');out.style.display='block';if(currentTab==='chat'){if(!raw){out.textContent='Write a message first.';return;}const q=raw.toLowerCase();const asks=/who\s+(created|made|built)|creator|who is behind|شكون\s+(صايب|دار|خلق)|من\s+(صنع|أنشأ)|qui a\s+(créé|fait)/i.test(q);out.textContent=asks?'I was created by Amine Mantourane.\n\nThis is a demo reply. A real AI model is not connected yet.':'Thanks for your message! This is the AMINE AI STUDIO demo chat. A live AI assistant is not connected yet.';}else if(currentTab==='files'){const f=$('fileInput').files[0];out.textContent=f?`Ready to review: ${f.name}\nServer upload and AI analysis are not connected yet.`:'Choose a file using Upload a file first.';}else{out.textContent=raw?`Your ${currentTab} prompt is ready:\n“${raw}”\n\nThe interface is ready, but the AI ${currentTab} service is not connected yet.`:'Write a description first.';}});
-$('language').addEventListener('change',e=>{const lang=e.target.value;document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.querySelectorAll('[data-en]').forEach(el=>{if(el.dataset[lang])el.textContent=el.dataset[lang];});});
-$('themeBtn').addEventListener('click',()=>{const r=document.documentElement,swapped=r.dataset.swapped==='yes';r.dataset.swapped=swapped?'no':'yes';r.style.setProperty('--green',swapped?'#27d17f':'#ff9a45');r.style.setProperty('--orange',swapped?'#ff9a45':'#27d17f');});
-</script></body></html>
+let cameraStream=null;
+let recorder=null;
+let audioChunks=[];
+
+function showPage(page,button){
+document.querySelectorAll('main section').forEach(s=>s.hidden=true);
+document.getElementById(page).hidden=false;
+document.querySelectorAll('.nav').forEach(n=>n.classList.remove('active'));
+if(button)button.classList.add('active');
+const titles={home:'Dashboard',chat:'AI Chat',image:'Image Tools',camera:'Camera Studio',voice:'Voice Studio',files:'My Files'};
+document.getElementById('pageTitle').textContent=titles[page];
+}
+
+function sendMessage(){
+const value=document.getElementById('prompt').value.trim();
+if(!value)return;
+document.getElementById('chatOutput').textContent=
+'You: '+value+'\n\nAMINE AI: This is demo mode. Connect a secure AI service to receive real answers.';
+}
+
+document.getElementById('imageInput').addEventListener('change',function(){
+const file=this.files[0];
+if(!file)return;
+const url=URL.createObjectURL(file);
+document.getElementById('imagePreview').innerHTML='';
+const img=document.createElement('img');
+img.src=url;
+img.className='preview';
+document.getElementById('imagePreview').appendChild(img);
+});
+
+async function openCamera(){
+try{
+cameraStream=await navigator.mediaDevices.getUserMedia({video:true});
+const video=document.getElementById('video');
+video.srcObject=cameraStream;
+video.hidden=false;
+}catch(e){alert('Camera permission denied or camera unavailable.');}
+}
+
+function takePhoto(){
+if(!cameraStream){alert('Open the camera first.');return;}
+const video=document.getElementById('video');
+const canvas=document.getElementById('canvas');
+canvas.width=video.videoWidth;
+canvas.height=video.videoHeight;
+canvas.getContext('2d').drawImage(video,0,0);
+const img=document.createElement('img');
+img.src=canvas.toDataURL('image/png');
+img.className='preview';
+const result=document.getElementById('photoResult');
+result.innerHTML='';
+result.appendChild(img);
+}
+
+function stopCamera(){
+if(cameraStream){cameraStream.getTracks().forEach(track=>track.stop());cameraStream=null;}
+document.getElementById('video').hidden=true;
+}
+
+async function startRecording(){
+try{
+const stream=await navigator.mediaDevices.getUserMedia({audio:true});
+audioChunks=[];
+recorder=new MediaRecorder(stream);
+recorder.ondataavailable=e=>audioChunks.push(e.data);
+recorder.onstop=()=>{
+const blob=new Blob(audioChunks,{type:'audio/webm'});
+const url=URL.createObjectURL(blob);
+const player=document.getElementById('audioPlayback');
+player.src=url;
+player.hidden=false;
+stream.getTracks().forEach(track=>track.stop());
+};
+recorder.start();
+document.getElementById('recordStatus').textContent='Recording...';
+}catch(e){alert('Microphone permission denied or unavailable.');}
+}
+
+function stopRecording(){
+if(recorder&&recorder.state==='recording'){
+recorder.stop();
+document.getElementById('recordStatus').textContent='Recording finished. Play your audio below.';
+}
+}
+
+document.getElementById('fileInput').addEventListener('change',function(){
+const file=this.files[0];
+document.getElementById('fileInfo').textContent=file?
+'Selected: '+file.name+' ('+(file.size/1024).toFixed(1)+' KB)':
+'No file selected.';
+});
+</script>
+</body>
+</html>
