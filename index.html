@@ -186,11 +186,7 @@ async function sendMessage(){
   }
 }
 
-const value=document.getElementById('prompt').value.trim();
-if(!value)return;
-document.getElementById('chatOutput').textContent=
-'You: '+value+'\n\nAMINE AI: This is demo mode. Connect a secure AI service to receive real answers.';
-}
+
 
 document.getElementById('imageInput').addEventListener('change',function(){
 const file=this.files[0];
