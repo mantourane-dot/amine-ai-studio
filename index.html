@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMINE AI STUDIO</title>
+<style>
+:root {
+  --green: #20c77a;
+  --orange: #ff963b;
+  --bg: #101712;
+  --panel: #19231d;
+  --line: #304136;
+  --text: #f5fff8;
+  --muted: #a5b5aa;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 6%;
+  border-bottom: 1px solid var(--line);
+  background: #121c16;
+}
+.logo { font-size: 21px; font-weight: 800; }
+.logo span { color: var(--green); }
+nav { display: flex; gap: 20px; flex-wrap: wrap; }
+nav a { color: var(--muted); text-decoration: none; cursor: pointer; }
+nav a:hover { color: var(--orange); }
+.hero {
+  padding: 75px 8% 55px;
+  text-align: center;
+  background: radial-gradient(ellipse at top, #244632, transparent 65%);
+}
+.tag {
+  display: inline-block;
+  color: var(--green);
+  border: 1px solid #286e4b;
+  border-radius: 30px;
+  padding: 9px 16px;
+  font-size: 13px;
+}
+h1 { font-size: clamp(38px, 7vw, 68px); margin: 22px 0 12px; }
+h1 span { color: var(--orange); }
+.hero p { color: var(--muted); line-height: 1.7; max-width: 650px; margin: auto; }
+.container { max-width: 1100px; margin: auto; padding: 35px 20px 70px; }
+h2 { margin-top: 35px; }
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 23px;
+  cursor: pointer;
+  transition: .2s;
+}
+.card:hover { transform: translateY(-4px); border-color: var(--green); }
+.card .emoji { font-size: 30px; }
+.card h3 { margin-bottom: 8px; }
+.card p { color: var(--muted); font-size: 14px; line-height: 1.6; }
+.workspace {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 22px;
+  margin-top: 18px;
+}
+textarea, input {
+  width: 100%;
+  background: #0e1711;
+  color: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+  font: inherit;
+}
+textarea { min-height: 100px; resize: vertical; }
+button {
+  background: var(--green);
+  color: #07150d;
+  font-weight: bold;
+  border: 0;
+  padding: 12px 19px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 12px;
+}
+button:hover { background: var(--orange); }
+#reply {
+  margin-top: 15px;
+  color: var(--muted);
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+footer {
+  border-top: 1px solid var(--line);
+  text-align: center;
+  padding: 25px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.orange { color: var(--orange); }
+@media(max-width:650px) {
+  header { align-items: flex-start; flex-direction: column; gap: 15px; }
+  nav { gap: 13px; font-size: 13px; }
+  .hero { padding-top: 50px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">✦ AMINE <span>AI STUDIO</span></div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#tools">AI Tools</a>
+    <a href="#chat">AI Chat</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="tag">✦ YOUR CREATIVE AI WORKSPACE</div>
+  <h1>HI, I'M <span>AMINE</span> 👋</h1>
+  <p>
+    Welcome to AMINE AI STUDIO.
+    Explore artificial intelligence, create ideas,
+    chat, and discover new creative possibilities.
+  </p>
+</section>
+
+<main class="container" id="tools">
+  <h2>Explore your <span class="orange">AI tools</span></h2>
+  <div class="cards">
+    <div class="card" onclick="chooseTool('Chat')">
+      <div class="emoji">💬</div>
+      <h3>AI Chat</h3>
+      <p>Ask questions, write, translate and explore ideas.</p>
+    </div>
+    <div class="card" onclick="chooseTool('Images')">
+      <div class="emoji">🎨</div>
+      <h3>AI Image Generator</h3>
+      <p>Turn your imagination into pictures.</p>
+    </div>
+    <div class="card" onclick="chooseTool('Videos')">
+      <div class="emoji">🎬</div>
+      <h3>AI Video Generator</h3>
+      <p>Discover creative video generation.</p>
+    </div>
+    <div class="card" onclick="chooseTool('Files')">
+      <div class="emoji">📁</div>
+      <h3>AI Files</h3>
+      <p>Prepare documents and files for AI assistance.</p>
+    </div>
+    <div class="card" onclick="chooseTool('Editor')">
+      <div class="emoji">🪄</div>
+      <h3>Photo Editor</h3>
+      <p>Explore creative photo editing tools.</p>
+    </div>
+    <div class="card" onclick="chooseTool('Creations')">
+      <div class="emoji">✨</div>
+      <h3>My Creations</h3>
+      <p>Your creative workspace and projects.</p>
+    </div>
+  </div>
+
+  <section id="chat">
+    <h2>Try the <span class="orange">AI assistant</span></h2>
+    <div class="workspace">
+      <p id="toolTitle">Ask me something!</p>
+      <textarea id="message" placeholder="Write your message here..."></textarea>
+      <button onclick="sendMessage()">Send message</button>
+      <div id="reply"></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About <span class="orange">the studio</span></h2>
+    <div class="workspace">
+      <p>AMINE AI STUDIO is a creative AI platform project.</p>
+      <p>Creator: <strong>Amine Mantourane</strong></p>
+      <p class="orange">Think. Create. Imagine.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2026 AMINE AI STUDIO — Created by Amine Mantourane
+</footer>
+
+<script>
+let currentTool = "Chat";
+
+function chooseTool(tool) {
+  currentTool = tool;
+  document.getElementById("toolTitle").textContent =
+    tool + " workspace";
+  document.getElementById("chat").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function sendMessage() {
+  const input = document.getElementById("message");
+  const reply = document.getElementById("reply");
+  const question = input.value.trim().toLowerCase();
+
+  if (!question) {
+    reply.textContent = "Write a message first!";
+    return;
+  }
+
+  const asksCreator =
+    question.includes("who created") ||
+    question.includes("who made") ||
+    question.includes("شكون صايب") ||
+    question.includes("شكون صنع") ||
+    question.includes("qui a créé") ||
+    question.includes("من صنع");
+
+  if (asksCreator) {
+    reply.textContent =
+      "I was created by Amine Mantourane.";
+  } else {
+    reply.textContent =
+      "This is the first preview of AMINE AI STUDIO. " +
+      "The real AI assistant will be connected in the next stage.";
+  }
+
+  input.value = "";
+}
+</script>
+</body>
+</html>
